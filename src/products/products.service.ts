@@ -9,7 +9,10 @@ export class ProductsService {
         @InjectRepository(Product) private readonly productRepository: Repository<Product>
     ){}
 
-    async all(): Promise<Product[]>{
+    async getAll(): Promise<Product[]>{
         return this.productRepository.find();
+    }
+    async getById(id: string): Promise<Product>{
+        return this.productRepository.findOne(id);
     }
 }
